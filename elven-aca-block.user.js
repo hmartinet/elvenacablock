@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Bloquer récolte académie de magie
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.2
 // @description  Block pickupProduction query for Magic Academy
 // @author       fatypunk
 // @match        https://*.elvenar.com/game*
