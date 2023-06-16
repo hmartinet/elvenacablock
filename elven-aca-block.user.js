@@ -28,6 +28,7 @@
     const origSend = XMLHttpRequest.prototype.send;
     XMLHttpRequest.prototype.send = function(body) {
         let allowed = true;
+        let reload = false;
 
         if (this._url.includes('/game/json?h=')) {
             const strBody = decoder.decode(body);
@@ -53,6 +54,7 @@
                     // console.log(res);
                     if (!magicAcademyId || res.requestData[0].includes(magicAcademyId)) {
                         allowed = false;
+                        reload = true;
                     }
                 }
             })
@@ -61,10 +63,10 @@
             origSend.apply(this, arguments);
         } else {
             this.abort();
-            location.reload();
+            if (reload) { location.reload(); }
 
-            //this.open(this._method, 'https://httpstat.us/200', this._async);
-            //origSend.apply(this, arguments);
+            // this.open(this._method, 'https://httpstat.us/200', this._async);
+            // origSend.apply(this, arguments);
         }
     };
 })();
